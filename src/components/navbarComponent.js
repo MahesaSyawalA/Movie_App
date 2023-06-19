@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-export default function NavbarComponent({ setType,search }) {
+import useAnalyticsEventTracker from "../useAnalyticsEventTracker";
+
+export default function NavbarComponent({ setType, search }) {
+  const gaEventTracker = useAnalyticsEventTracker("listMovie");
+
   return (
     <>
       <div className="fixed flex bg-[#27374D] justify-between h-auto w-[100%] px-14 ">
@@ -7,7 +11,7 @@ export default function NavbarComponent({ setType,search }) {
         <div className="flex gap-5 px-7 py-5  ">
           <button
             className="px-5 font-extrabold text-[#9DB2BF] font-mono hover:text-[#DDE6ED]"
-            onClick={() => setType("upcoming")}
+            onClick={() => (setType("upcoming"), gaEventTracker("COMING"))}
           >
             {" "}
             Up Coming
@@ -34,10 +38,10 @@ export default function NavbarComponent({ setType,search }) {
             Top Rated
           </button>
           <input
-          placeholder="cari movie kesayangan..."
-          className="bg-[#DDE6ED]  text-black px-5 text-sm rounded-full focus:outline-none "
-          onChange={({ target }) => search(target.value)}
-        />
+            placeholder="cari movie kesayangan..."
+            className="bg-[#DDE6ED]  text-black px-5 text-sm rounded-full focus:outline-none "
+            onChange={({ target }) => search(target.value)}
+          />
         </div>
       </div>
     </>

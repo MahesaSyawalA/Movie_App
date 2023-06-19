@@ -6,8 +6,11 @@ import { ListMovieComponent } from "./components/content/listMovieComponent";
 import { FooterComponent } from "./components/footerComponent";
 import { DiscoverComponent } from "./components/content/discoverComponent";
 import axios from "axios";
+import ReactGA from "react-ga";
+
 
 function App(props) {
+  const TRACKING_ID = "G-NQ7J223M7Z";
   const baseUrl = process.env.REACT_APP_BASEURL;
   const apiKey = process.env.REACT_APP_APIKEY;
   const [popularMovies, setPopularMovies] = useState([]);
@@ -15,6 +18,8 @@ function App(props) {
   const [hero, setHero] = useState(false);
   const [discoverMov, setDiscover] = useState([]);
   const bgimg = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F2014465.png&tbnid=rtrKtyUiUP8QsM&vet=12ahUKEwjhiNDkq8L_AhVQ_zgGHTeHDWoQMygBegUIARDGAQ..i&imgrefurl=https%3A%2F%2Fwww.islandcrematorium.ie%2F%3Fwork%3D5.6.2229123.6.17.31.wallpaper%2Bpc%2Baesthetic&docid=5vXMSVhTIgVR6M&w=1620&h=1040&q=wallpaper%20pc%20aesthetic&ved=2ahUKEwjhiNDkq8L_AhVQ_zgGHTeHDWoQMygBegUIARDGAQ";
+
+  ReactGA.initialize(TRACKING_ID);
 
   useEffect(() => {
     getMovieList(Type).then((result) => {
