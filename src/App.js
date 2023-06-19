@@ -2,10 +2,10 @@ import "./App.css";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Home from "./pages/home";
 import { About } from "./pages/about";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 
-const TRACKING_ID = "UA-274037390-2";
+const TRACKING_ID = "G-Z97GKSYCW6";
 ReactGA.initialize(TRACKING_ID);
 
 function App() {

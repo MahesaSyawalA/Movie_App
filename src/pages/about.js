@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import ReactGA, { pageview } from "react-ga";
+import ReactGA, { pageview } from "react-ga4";
 
-ReactGA.initialize('UA-274037390-2');
+ReactGA.initialize('G-Z97GKSYCW6');
 export function About() {
 
     useEffect(()=>{

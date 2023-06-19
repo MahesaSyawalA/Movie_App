@@ -5,10 +5,13 @@ import { ListMovieComponent } from "../components/content/listMovieComponent";
 import { FooterComponent } from "../components/footerComponent";
 import { DiscoverComponent } from "../components/content/discoverComponent";
 import axios from "axios";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+const IDGA = 'G-Z97GKSYCW6';
+ReactGA.initialize(IDGA);
+ReactGA.pageview(window.location.pathname);
 
 const Home = () => {
     const navigate = useNavigate();
@@ -20,7 +23,6 @@ const Home = () => {
   const [discoverMov, setDiscover] = useState([]);
 
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname);
     getMovieList(Type).then((result) => {
       setPopularMovies(result);
     });
