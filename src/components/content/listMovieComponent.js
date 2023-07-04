@@ -1,14 +1,19 @@
+import { useState } from "react";
 import React from "react";
 
 export function ListMovieComponent({ popularMovies }) {
   return popularMovies.map((movie, i) => {
     return (
-      <div className="w-[20%] bg-[gray-500] text-white" key={i}>
-        <img
-          className="bg-cover"
-          src={`${process.env.REACT_APP_BASEIMGURL}/${movie.poster_path}`}
-        />
-        <div className="text-sm font-semibold bg-[]">
+      <div className="rounded-lg w-[20%] flex items-end h-96 bg-[gray-500] bg-cover  text-[#DDE6ED] group hover:shadow-inner " 
+      style={{
+        backgroundImage: `url(${process.env.REACT_APP_BASEIMGURL}/${movie.poster_path})`,
+      }}
+      key={i} >
+        {/* <img
+          className="bg-cover rounded-t-md"
+          src={` ${process.env.REACT_APP_BASEIMGURL}/${movie.poster_path} `}
+        /> */}
+        <div className="w-full transition duration-500 opacity-0 text-sm font-semibold rounded-b-md bg-[#526D82] group-hover:bg-[#526D82] group-hover:opacity-100 group-hover:">
           <p> {movie.title} </p>
           <p>{movie.release_date}</p>
           <p>{movie.vote_average}</p>

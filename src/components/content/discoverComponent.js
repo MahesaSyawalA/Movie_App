@@ -2,7 +2,7 @@ import React, { useEffect, useState, useTransition } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { discoverMovie } from "../../api";
 
-export function DiscoverComponent({ discover = [] }) {
+export function DiscoverComponent({ discover = [], hero }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [handle, setHandle] = useState();
   const [data, setData] = useState([]);
@@ -45,7 +45,7 @@ export function DiscoverComponent({ discover = [] }) {
       );
     });
   return (
-    <div className="max-w-[1400px] h-[780px] w-full m-auto  group ">
+    <div className={`max-w-[1400px] h-[780px] w-full m-auto group ${hero ? "hidden" : " "} `}>
       {/* <div className="flex-shrink-0 w-full flex h-full bg-center bg-cover duration-500 ">
         <img
           src={`${process.env.REACT_APP_BASEIMGURL}${discover[currentIndex]?.backdrop_path}`}

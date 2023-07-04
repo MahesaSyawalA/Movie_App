@@ -5,7 +5,7 @@ import { ListMovieComponent } from "../components/content/listMovieComponent";
 import { FooterComponent } from "../components/footerComponent";
 import { DiscoverComponent } from "../components/content/discoverComponent";
 import axios from "axios";
-import ReactGA from "react-ga4";
+import ReactGA from "react-ga";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -14,13 +14,14 @@ ReactGA.initialize(IDGA);
 ReactGA.pageview(window.location.pathname);
 
 const Home = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const baseUrl = process.env.REACT_APP_BASEURL;
   const apiKey = process.env.REACT_APP_APIKEY;
   const [popularMovies, setPopularMovies] = useState([]);
   const [Type, setType] = useState("popular");
   const [hero, setHero] = useState(false);
   const [discoverMov, setDiscover] = useState([]);
+  // const [scroll,setScroll] = useState(false);
 
   useEffect(() => {
     getMovieList(Type).then((result) => {
@@ -43,11 +44,17 @@ const Home = () => {
       setHero(false);
     }
   };
+  
+  const autoScroll=()=>{
+    window.scrollTo(0,800);
+  }
+
+
   return (
     <>
       <div className="App">
-        <NavbarComponent setType={setType} search={search} />
-        <header className="App-header">
+        <NavbarComponent setType={setType} search={search} autoScroll={autoScroll} />
+        <header className="App-header scroll-smooth">
           {/* <div
           className={`bg-[#9DB2BF] p-10 w-full bg-no-repeat bg-right flex h-[600px] items-center ${
             hero ? "hidden" : "flex"
@@ -65,16 +72,17 @@ const Home = () => {
           </div>
           <div className="bg-cover bg-center bg-no-repeat w-[55%] h-full bg-[url('./assets/img/hero_prev.png')]"></div>
         </div> */}
-          <DiscoverComponent discover={discoverMov?.data?.results} />
-
-          <div className="py-28 flex flex-wrap gap-4 bg-gr items-center justify-center container">
+          <DiscoverComponent discover={discoverMov?.data?.results} hero={hero} />
+          <div id="movieList" className=" py-20 flex flex-wrap gap-5 bg-gr items-center justify-center container">
+            <div className="container px-24 py-4 text-left uppercase text-3xl font-bold ">
+            <h1 >{Type.replace('_',' ')}</h1>
+            </div>
             <ListMovieComponent popularMovies={popularMovies} />
           </div>
 
           {/* <div style={`backgrounmage: url( '${bgimg}' )`} className=" py-28 flex flex-wrap gap-4 bg-gr items-center justify-center container">
         </div> */}
         </header>
-        <button onClick={()=>navigate( '/About' )}> about </button>
         <FooterComponent />
       </div>
     </>
