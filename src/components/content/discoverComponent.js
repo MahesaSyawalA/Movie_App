@@ -24,11 +24,17 @@ export function DiscoverComponent({ discover = [], hero }) {
     discover.map((data, i) => {
       return (
         <>
-          <div key={i} id={`item ${i + 1}`} className="carousel-item flex-col w-full">
-            <img
-              src={`${process.env.REACT_APP_BASEIMGURL}${data?.backdrop_path}`}
-              className="w-full static"
-            />
+          <div
+            key={i}
+            id={`item ${i + 1}`}
+            style={{
+              backgroundImage: `url(${process.env.REACT_APP_BASEIMGURL}${data?.backdrop_path})`,
+            }}
+            className=" carousel-item items-end h-full flex w-full bg-center bg-cover bg-no-repeat"
+          > 
+          <div className=" w-full h-[30%] border">
+            
+          </div>
           </div>
         </>
       );
@@ -45,7 +51,11 @@ export function DiscoverComponent({ discover = [], hero }) {
       );
     });
   return (
-    <div className={`max-w-[1400px] h-[780px] w-full m-auto group ${hero ? "hidden" : " "} `}>
+    <div
+      className={`max-w-[1400px] h-[780px] w-full m-auto group ${
+        hero ? "hidden" : " "
+      } `}
+    >
       {/* <div className="flex-shrink-0 w-full flex h-full bg-center bg-cover duration-500 ">
         <img
           src={`${process.env.REACT_APP_BASEIMGURL}${discover[currentIndex]?.backdrop_path}`}
@@ -61,7 +71,7 @@ export function DiscoverComponent({ discover = [], hero }) {
         <BsChevronCompactRight size={30} onClick={nextSLide} />
       </div>
       <div className="translate-y-[50%] w-full h-[20%] border"></div> */}
-      <div className="carousel w-full">
+      <div className=" carousel h-full w-full">
         <Slides />
       </div>
       <div className="flex justify-center w-full py-2 gap-2">

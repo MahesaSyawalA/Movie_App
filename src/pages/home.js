@@ -21,6 +21,8 @@ const Home = () => {
   const [Type, setType] = useState("popular");
   const [hero, setHero] = useState(false);
   const [discoverMov, setDiscover] = useState([]);
+  const [navbarBg, setNavbarBg] = useState(false);
+  
   // const [scroll,setScroll] = useState(false);
 
   useEffect(() => {
@@ -46,14 +48,23 @@ const Home = () => {
   };
   
   const autoScroll=()=>{
-    window.scrollTo(0,800);
+      window.scrollTo(0,800);
   }
 
+  const changeBackgroundNavbar =() =>{
+    if(window.scrollY >= 800 ){
+      setNavbarBg(true)
+    }else{
+      setNavbarBg(false )
+    }
+  }
+
+  window.addEventListener('scroll',changeBackgroundNavbar )
 
   return (
     <>
       <div className="App">
-        <NavbarComponent setType={setType} search={search} autoScroll={autoScroll} />
+        <NavbarComponent setType={setType} search={search} autoScroll={autoScroll}  setHero={setHero} navbarBg={navbarBg}/>
         <header className="App-header scroll-smooth">
           {/* <div
           className={`bg-[#9DB2BF] p-10 w-full bg-no-repeat bg-right flex h-[600px] items-center ${
@@ -74,7 +85,7 @@ const Home = () => {
         </div> */}
           <DiscoverComponent discover={discoverMov?.data?.results} hero={hero} />
           <div id="movieList" className=" py-20 flex flex-wrap gap-5 bg-gr items-center justify-center container">
-            <div className="container px-24 py-4 text-left uppercase text-3xl font-bold ">
+            <div className="container px-24 pt-7 text-left uppercase text-3xl font-bold ">
             <h1 >{Type.replace('_',' ')}</h1>
             </div>
             <ListMovieComponent popularMovies={popularMovies} />
