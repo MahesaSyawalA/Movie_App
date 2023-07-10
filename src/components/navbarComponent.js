@@ -15,7 +15,7 @@ export default function NavbarComponent({ setType, search, autoScroll, setHero, 
         ></div>
         <div className=" flex gap-5 px-7 py-5 text-[#DDE6ED]  select-none ">
           <button
-            className="px-5 font-extrabold hover:text-[#526D82]"
+            className="px-5 font-extrabold hover:text-[#526D82] "
             onClick={() => {
               setHero(false);
               setType("upcoming");

@@ -60,6 +60,7 @@ const Home = () => {
   }
 
   window.addEventListener('scroll',changeBackgroundNavbar )
+  console.log(popularMovies);
 
   return (
     <>
