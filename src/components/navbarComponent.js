@@ -6,9 +6,6 @@ export default function NavbarComponent({ setType, search, autoScroll, setHero, 
   
   const gaEventTracker = useAnalyticsEventTracker("listMovie");
 
-
-  
-
   return (
     <>
       <div className={` fixed z-10  top-0 flex ${navbarBg ? 'bg-[#27374D]' : 'bg-gradient-to-b from-[#27374da9]' }  justify-between h-auto w-[100%] px-14 `} >

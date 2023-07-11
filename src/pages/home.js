@@ -22,8 +22,6 @@ const Home = () => {
   const [hero, setHero] = useState(false);
   const [discoverMov, setDiscover] = useState([]);
   const [navbarBg, setNavbarBg] = useState(false);
-  
-  // const [scroll,setScroll] = useState(false);
 
   useEffect(() => {
     getMovieList(Type).then((result) => {
@@ -67,23 +65,6 @@ const Home = () => {
       <div className="App">
         <NavbarComponent setType={setType} search={search} autoScroll={autoScroll}  setHero={setHero} navbarBg={navbarBg}/>
         <header className="App-header scroll-smooth">
-          {/* <div
-          className={`bg-[#9DB2BF] p-10 w-full bg-no-repeat bg-right flex h-[600px] items-center ${
-            hero ? "hidden" : "flex"
-          } `}
-        >
-          <div className=" ms-40 text-left w-[30%] grid-col-1 p-2 h-[200px]  ">
-            <span className="font-bold text-[#DDE6ED] ">MovSyle</span>
-            <h1 className="text-3xl font-bold">
-              Streaming Movie,TVs Shows, & More.
-            </h1>
-            <p></p>
-            <button className="bg-[#DDE6ED] hover:bg-[#526D82] mt-3 p-2 rounded-lg font-bold text-[#27374D]">
-              Berlangganan Sekarang
-            </button>
-          </div>
-          <div className="bg-cover bg-center bg-no-repeat w-[55%] h-full bg-[url('./assets/img/hero_prev.png')]"></div>
-        </div> */}
           <DiscoverComponent discover={discoverMov?.data?.results} hero={hero} />
           <div id="movieList" className=" py-20 flex flex-wrap gap-5 bg-gr items-center justify-center container">
             <div className="container px-24 pt-7 text-left uppercase text-3xl font-bold ">
@@ -91,9 +72,6 @@ const Home = () => {
             </div>
             <ListMovieComponent popularMovies={popularMovies} />
           </div>
-
-          {/* <div style={`backgrounmage: url( '${bgimg}' )`} className=" py-28 flex flex-wrap gap-4 bg-gr items-center justify-center container">
-        </div> */}
         </header>
         <FooterComponent />
       </div>

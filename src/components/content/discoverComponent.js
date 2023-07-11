@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useTransition } from "react";
-import { discoverMovie } from "../../api";
 import { HiChevronLeft, HiChevronRight, HiStar } from "react-icons/hi";
 
 export function DiscoverComponent({ discover = [], hero }) {
