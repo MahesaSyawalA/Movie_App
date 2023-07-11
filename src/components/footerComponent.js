@@ -1,12 +1,17 @@
 import React from "react";
-
+import BgLogo from "../assets/images/bgtransparant.png"
 export function FooterComponent() {
   return (
     <div className=" bg-[#27374D] w-full  auto">
       <div className="flex w-full">
-        <div className=" flex lg:flex-col p-10 w-[25%] ">
-          <div className="flex w-full h-14 text-[#DDE6ED] text-4xl font-bold px-4  ">
-            Logo
+        <div className=" flex lg:flex-col p-10 gap-4 w-[25%] ">
+          <div 
+          className="flex w-full h-14 text-[#DDE6ED] text-4xl font-bold px-4 bg-cover bg-center "
+          style={{
+            backgroundImage : `url(${BgLogo})`
+          }}
+          >
+        
           </div>
           <button className=" m-4 py-2 rounded-md bg-[#DDE6ED] hover:bg-[#526D82] text-[#27374D] text-2xl font-bold ">
             Subscribe

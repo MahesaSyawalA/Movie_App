@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import useAnalyticsEventTracker from "../useAnalyticsEventTracker";
+import BgLogo from "../assets/images/bgtransparant.png"
+
 export default function NavbarComponent({ setType, search, autoScroll, setHero, navbarBg }) {
   
   const gaEventTracker = useAnalyticsEventTracker("listMovie");
@@ -11,7 +13,10 @@ export default function NavbarComponent({ setType, search, autoScroll, setHero, 
     <>
       <div className={` fixed z-10  top-0 flex ${navbarBg ? 'bg-[#27374D]' : 'bg-gradient-to-b from-[#27374da9]' }  justify-between h-auto w-[100%] px-14 `} >
         <div
-          className="rounded-full px-10 bg-center "
+          className=" px-24 bg-center  bg-cover "
+          style={{
+            backgroundImage : `url(${BgLogo})`
+          }}
         ></div>
         <div className=" flex gap-5 px-7 py-5 text-[#DDE6ED]  select-none ">
           <button
@@ -62,7 +67,7 @@ export default function NavbarComponent({ setType, search, autoScroll, setHero, 
         <div className=" flex items-center  ">
           <input
             placeholder="cari movie"
-            className="bg-[#DDE6ED] bg-opacity-20 text-center py-2 text-[#DDE6ED] text-sm rounded-full focus:outline-none "
+            className="bg-[#DDE6ED] bg-opacity-20 text-center py-1 text-[#DDE6ED] text-sm rounded-full focus:outline-none "
             onChange={ ({ target }) => search(target.value) }
             onClick={({ target }) => search(target.value)}
             />

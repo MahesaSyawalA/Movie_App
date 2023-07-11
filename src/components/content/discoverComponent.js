@@ -32,9 +32,7 @@ export function DiscoverComponent({ discover = [], hero }) {
     discover.map((data, i) => {
       return (
         <>
-          <a key={i} href={`#item${i + 1}`} className="btn btn-xs">
-            {i + 1}
-          </a>
+          <a key={i} href={`#item${i + 1}`} className="btn btn-xs"></a>
         </>
       );
     });
@@ -44,32 +42,30 @@ export function DiscoverComponent({ discover = [], hero }) {
         hero ? "hidden" : " "
       } `}
     >
-      <div className=" carousel h-full w-full">
+      <div className=" bg-gradient-to-b carousel h-full w-full">
         <div
           key={discover[currentIndex]}
+          id={`item${currentIndex + 1}`}
           style={{
             backgroundImage: `url(${process.env.REACT_APP_BASEIMGURL}${discover[currentIndex]?.backdrop_path})`,
           }}
-          className=" carousel-item justify-end h-full flex flex-col w-full bg-center bg-cover bg-no-repeat"
+          className=" ease-in-out duration-700 delay-100 carousel-item justify-end h-full flex flex-col w-full bg-center bg-cover bg-no-repeat"
         >
-          <div className="flex items-start justify-between w-full h-1/4 mb-7 text-[#DDE6ED]  ">
-            <button
-              className="hover:text-[#526D82] hover:"
-              onClick={prevSlide}
-            >
+          <div className=" px-5 opacity-70 flex items-start justify-between w-full h-1/4 mb-7 text-[#DDE6ED]  ">
+            <button className="hover:text-[#526D82]" onClick={prevSlide}>
               {" "}
               <HiChevronLeft size={50} />{" "}
             </button>
-            <button className="hover:text-[#526D82]"
-            onClick={nextSLide}
-            >
+            <button className="hover:text-[#526D82]" onClick={nextSLide}>
               {" "}
               <HiChevronRight size={50} />{" "}
             </button>
           </div>
           <div className="flex h-[30%] bg-gradient-to-t from-[#27374da9] via-[#27374da9]">
-            <div className="flex flex-col items-start p-8 gap-2 w-[35%] h-[100%]  ">
-              <h3 className=" truncate">{discover[currentIndex]?.original_title}</h3>
+            <div className=" flex flex-col items-start p-8 gap-2 w-[35%] h-[100%] ">
+              <button className=" flex truncate text-3xl font-semibold text-ellipsis ">
+                {discover[currentIndex]?.original_title}
+              </button>
               <ul className="flex gap-5 text-[14px]">
                 <li>{discover[currentIndex]?.release_date}</li>
                 <li className="flex items-center gap-1 border-l-4 border-[#526D82] px-2 ">
@@ -86,7 +82,6 @@ export function DiscoverComponent({ discover = [], hero }) {
         </div>
       </div>
       <div className="flex justify-center w-full py-2 gap-2">
-        {/* <ButtonSlides /> */}
       </div>
     </div>
   );
